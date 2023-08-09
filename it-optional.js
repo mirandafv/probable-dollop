@@ -1,4 +1,14 @@
-const { CONSTANTS } = require('./constants.js');
+type AssertionError<T = {}> = Error & T & {
+    showDiff: boolean;
+};
+
+interface AssertionErrorConstructor {
+    new<T = {}>(message: string, props?: T, ssf?: Function): AssertionError<T>;
+}
+
+declare const AssertionError: AssertionErrorConstructor;
+
+export = AssertionError;const { CONSTANTS } = require('./constants.js');
 
 const { SPECIAL_PROP_VALUE } = CONSTANTS;
 
